@@ -3,7 +3,7 @@
   "use strict";
 
   /* ===== AJUSTES =====
-     bookingUrl:   enlace de tu agenda (Cal.com, Calendly...). Si lo rellenas, aparece el botón "Reservar videollamada".
+     bookingUrl:   enlace de tu agenda (Cal.com, Calendly...). Si lo rellenas, aparecen los enlaces opcionales "Prefiero hablarlo primero".
      formEndpoint: URL del webhook de n8n que recibe las solicitudes. Si está vacío, el formulario abre el correo del visitante. */
   var CONFIG = {
     email: "damia@boschsystems.net",
@@ -20,7 +20,7 @@
   $$(".js-phone").forEach(function (a) { a.textContent = CONFIG.phone; a.href = "tel:" + CONFIG.phone.replace(/\s+/g, ""); });
   $$(".js-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* Botón de videollamada */
+  /* Botón opcional de llamada */
   if (CONFIG.bookingUrl) {
     $$(".js-booking").forEach(function (a) { a.href = CONFIG.bookingUrl; a.target = "_blank"; a.rel = "noopener"; a.hidden = false; });
     $$(".js-no-booking").forEach(function (a) { a.hidden = true; });
