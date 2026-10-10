@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="256" height="256" role="img" aria-label="Bosch Systems">
-  <title>Bosch Systems</title>
-  <path d="M12 8H21.5A6 6 0 0 1 21.5 20H12M12 20H23A6 6 0 0 1 23 32H12" fill="none" stroke="#F5F5F7" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="12" cy="8" r="3.2" fill="#5E7FF0"/>
-  <circle cx="12" cy="20" r="3.2" fill="#5E7FF0"/>
-  <circle cx="12" cy="32" r="3.2" fill="#5E7FF0"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="256" height="256" role="img" aria-label="Bosch Systems"><title>Bosch Systems</title><path d="M12 8H21.5A6 6 0 0 1 21.5 20H12M12 20H23A6 6 0 0 1 23 32H12" fill="none" stroke="#F5F5F7" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="8" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="20" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="32" r="3.8" fill="#5E7FF0"/></svg>
