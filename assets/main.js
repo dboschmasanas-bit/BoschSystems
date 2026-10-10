@@ -6,9 +6,9 @@
      bookingUrl:   enlace de tu agenda (Cal.com, Calendly...). Si lo rellenas, aparece el botón "Reservar videollamada".
      formEndpoint: URL del webhook de n8n que recibe las solicitudes. Si está vacío, el formulario abre el correo del visitante. */
   var CONFIG = {
-    email: "dboschmasanas@gmail.com",
+    email: "damia@boschsystems.net",
     phone: "+34 621 237 118",
-    bookingUrl: "",
+    bookingUrl: "https://cal.com/damia-bosch-masanas-p4kf6e/videollamada-de-15-min",
     formEndpoint: "https://damiabosch-n8n.5bzgnq.easypanel.host/webhook/auditoria-boschsystems"
   };
 
