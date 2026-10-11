@@ -510,3 +510,18 @@ details[open]::details-content{block-size:auto}
   .reveal,.steps.reveal li{opacity:1!important;transform:none!important}
   .top{position:static}
 }
+
+/* Página de reserva de llamadas */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.call-page{padding-top:clamp(40px,6vw,88px)}
+.call-page .head{max-width:760px;margin-bottom:clamp(32px,4vw,56px)}
+.call-page .head .lead{margin-top:24px}
+.calls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.calls .proc{gap:10px}
+.calls .proc-n{font-size:.78rem;letter-spacing:.04em}
+.calls .call-go{margin-top:auto;padding-top:14px}
+.call-notes{list-style:none;margin:clamp(28px,3.4vw,44px) 0 0;padding:0;display:grid;gap:10px;max-width:760px;color:var(--muted);font-size:.95rem;line-height:1.6}
+.call-notes li{position:relative;padding-left:22px}
+.call-notes li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent-ink);opacity:.8}
+.call-notes a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:700px){.calls{grid-template-columns:1fr}}
