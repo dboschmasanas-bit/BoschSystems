@@ -26,15 +26,83 @@
     $$(".js-no-booking").forEach(function (a) { a.hidden = true; });
   }
 
-  /* Menú móvil */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Menú móvil: se cierra con un enlace, con Escape, tocando fuera o al pasar a escritorio */
   var top = $(".top"), menuBtn = $(".menu-btn");
   if (top && menuBtn) {
-    menuBtn.addEventListener("click", function () {
-      var open = top.classList.toggle("open");
+    var setMenu = function (open) {
+      top.classList.toggle("open", open);
       menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
+      menuBtn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      document.documentElement.classList.toggle("menu-open", open);
+    };
+    menuBtn.addEventListener("click", function () { setMenu(!top.classList.contains("open")); });
     $$(".nav a").forEach(function (a) {
-      a.addEventListener("click", function () { top.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); });
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && top.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (top.classList.contains("open") && !top.contains(e.target)) setMenu(false);
+    });
+    if (window.matchMedia) {
+      var desktop = window.matchMedia("(min-width: 901px)");
+      var onDesktop = function () { if (desktop.matches) setMenu(false); };
+      if (desktop.addEventListener) desktop.addEventListener("change", onDesktop);
+    }
+
+  }
+
+  /* Sección activa en el menú (solo enlaces a esta misma página) */
+  if ("IntersectionObserver" in window) {
+    var spyLinks = {};
+    $$('.nav a[href^="#"]:not(.nav-cta)').forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (id && document.getElementById(id)) spyLinks[id] = a;
+    });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { spyLinks[e.target.id].classList.toggle("is-active", e.isIntersecting); });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(spyLinks).forEach(function (id) { spy.observe(document.getElementById(id)); });
+  }
+
+  /* Aparición suave al hacer scroll. Solo se aplica a lo que todavía no está en pantalla,
+     así que sin JavaScript o con movimiento reducido todo se ve desde el principio.
+     Se prepara justo después del primer pintado para no retrasarlo. */
+  if (!reduceMotion && "IntersectionObserver" in window && window.requestAnimationFrame) {
+    var setupReveal = function () {
+      var revealer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); revealer.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      var fold = window.innerHeight, blocks = [];
+      [".head", ".procs > .proc", ".sectors > li", ".calc > *", ".steps", ".pricing > .plan", ".pricing-note",
+       ".trust > div", ".audit > *", ".faq > details", ".about > *", ".final-panel", ".compare > *", ".feat > div"
+      ].forEach(function (sel) { blocks = blocks.concat($$(sel)); });
+      /* Primero se leen todas las posiciones y después se escriben las clases: una sola maquetación */
+      var tops = blocks.map(function (el) { return el.getBoundingClientRect().top; });
+      blocks.forEach(function (el, k) {
+        if (tops[k] < fold) return;
+        var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+        el.style.setProperty("--d", Math.min(i, 4) * 70 + "ms");
+        el.classList.add("reveal");
+        revealer.observe(el);
+      });
+    };
+    window.requestAnimationFrame(function () { setTimeout(setupReveal, 0); });
+  }
+
+  /* Luz que sigue al cursor en las tarjetas de procesos */
+  if (window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    $$(".proc").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
     });
   }
 
@@ -122,9 +190,9 @@
   };
   var flow = $("#flow");
   if (flow) {
-    var list = $("#flow-steps"), timers = [];
+    var list = $("#flow-steps"), panel = $("#flow-panel"), tabs = $$(".flow-tabs button"), timers = [];
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var progress = function (v) { flow.style.setProperty("--flow-p", v); };
     var show = function (key) {
       var f = FLOWS[key]; if (!f) return;
       timers.forEach(clearTimeout); timers = [];
@@ -133,21 +201,49 @@
         return '<li class="' + (s[3] ? "human" : "") + '"><span class="dot"></span><div><strong>' + esc(s[0]) + "</strong><small>" + esc(s[1]) + '</small></div><span class="mono">' + esc(s[2]) + "</span></li>";
       }).join("");
       var items = $$("li", list);
-      if (reduce) { items.forEach(function (li) { li.classList.add("done"); }); return; }
+      if (reduceMotion) { items.forEach(function (li) { li.classList.add("done"); }); progress(1); return; }
       flow.classList.add("playing");
+      progress(0);
       items.forEach(function (li, i) {
         timers.push(setTimeout(function () {
           li.classList.add("done");
+          progress((i + 1) / items.length);
           if (i === items.length - 1) flow.classList.remove("playing");
         }, 250 + i * 380));
       });
     };
-    $$(".flow-tabs button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        $$(".flow-tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
-        show(b.getAttribute("data-flow"));
+    /* Pestañas accesibles: clic, flechas, Inicio y Fin */
+    var select = function (b, focus) {
+      tabs.forEach(function (x) {
+        var on = x === b;
+        x.setAttribute("aria-selected", on ? "true" : "false");
+        x.tabIndex = on ? 0 : -1;
+      });
+      if (panel && b.id) panel.setAttribute("aria-labelledby", b.id);
+      if (focus) b.focus();
+      show(b.getAttribute("data-flow"));
+    };
+    tabs.forEach(function (b, i) {
+      b.tabIndex = b.getAttribute("aria-selected") === "true" ? 0 : -1;
+      b.addEventListener("click", function () { select(b); });
+      b.addEventListener("keydown", function (e) {
+        var k = e.key, n = tabs.length;
+        var j = k === "ArrowRight" ? i + 1 : k === "ArrowLeft" ? i - 1 : k === "Home" ? 0 : k === "End" ? n - 1 : null;
+        if (j === null) return;
+        e.preventDefault();
+        select(tabs[(j + n) % n], true);
       });
     });
+    /* El ejemplo inicial se reproduce una vez, cuando el panel entra en pantalla */
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      var firstPlay = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        firstPlay.disconnect();
+        var current = tabs.filter(function (x) { return x.getAttribute("aria-selected") === "true"; })[0];
+        show(current ? current.getAttribute("data-flow") : "citas");
+      }, { threshold: 0.35 });
+      firstPlay.observe(flow);
+    }
   }
 
   /* Formularios de contacto */

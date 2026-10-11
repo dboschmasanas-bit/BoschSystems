@@ -42,7 +42,7 @@
         <h1>Un paciente escribe a las 21:40. <em>Tu clínica contesta en segundos.</em></h1>
         <p class="lead">Instalamos un asistente que responde a tus pacientes por WhatsApp y web, reserva la cita en tu agenda y envía los recordatorios. Tu equipo se dedica a los pacientes que ya están en la clínica.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#auditoria">Solicitar auditoría gratuita</a>
+          <a class="btn btn-primary btn-arrow" href="#auditoria">Solicitar auditoría gratuita</a>
           <a class="btn btn-ghost js-booking" href="#auditoria" hidden>Prefiero hablarlo primero</a>
           <a class="btn btn-ghost js-no-booking" href="#como-funciona">Ver cómo funciona</a>
         </div>
@@ -70,10 +70,13 @@
     </div>
   </section>
 
-  <section class="band" id="problema">
+  <section class="band band-surface" id="problema">
     <div class="wrap">
-      <div class="head">
-        <h2>La misma consulta, dos desenlaces</h2>
+      <div class="head head-split">
+        <div>
+          <p class="eyebrow" aria-hidden="true"><span>01</span>El problema</p>
+          <h2>La misma consulta, dos desenlaces</h2>
+        </div>
         <p>Muchos pacientes escriben fuera de horario o mientras recepción atiende a otra persona. El que contesta primero suele quedarse la cita.</p>
       </div>
       <div class="compare">
@@ -101,6 +104,7 @@
   <section class="band" id="como-funciona">
     <div class="wrap">
       <div class="head">
+        <p class="eyebrow" aria-hidden="true"><span>02</span>El asistente</p>
         <h2>Qué hace el asistente en tu clínica</h2>
       </div>
       <dl class="feat">
@@ -114,9 +118,10 @@
     </div>
   </section>
 
-  <section class="band" id="fases">
+  <section class="band band-surface" id="fases">
     <div class="wrap">
       <div class="head">
+        <p class="eyebrow" aria-hidden="true"><span>03</span>Implantación</p>
         <h2>Funcionando sin interrumpir tu día a día</h2>
         <p>Tu equipo solo tiene que dedicar una reunión inicial y revisar las pruebas.</p>
       </div>
@@ -131,8 +136,11 @@
 
   <section class="band" id="calculadora">
     <div class="wrap">
-      <div class="head">
-        <h2>¿Cuánto cuesta no contestar a tiempo?</h2>
+      <div class="head head-split">
+        <div>
+          <p class="eyebrow" aria-hidden="true"><span>04</span>Calculadora</p>
+          <h2>¿Cuánto cuesta no contestar a tiempo?</h2>
+        </div>
         <p>Introduce los datos de tu clínica para dimensionar los ingresos que se pierden con las consultas que se enfrían.</p>
       </div>
       <div class="calc">
@@ -166,10 +174,13 @@
     </div>
   </section>
 
-  <section class="band" id="precios">
+  <section class="band band-surface" id="precios">
     <div class="wrap">
-      <div class="head">
-        <h2>Cómo funciona el precio</h2>
+      <div class="head head-split">
+        <div>
+          <p class="eyebrow" aria-hidden="true"><span>05</span>Precio</p>
+          <h2>Cómo funciona el precio</h2>
+        </div>
         <p>Sin tarifas por horas ni sorpresas. Sabes lo que vas a pagar antes de empezar.</p>
       </div>
       <div class="pricing">
@@ -208,6 +219,7 @@
   <section class="band" id="auditoria">
     <div class="wrap audit">
       <div>
+        <p class="eyebrow" aria-hidden="true"><span>06</span>Auditoría</p>
         <h2>Solicita una auditoría gratuita para tu clínica</h2>
         <p class="lead">Te escribimos con unas preguntas breves y te enseñamos cómo te contactan hoy los pacientes y dónde se pierden consultas. Sin compromiso.</p>
         <ul class="checks">
@@ -255,8 +267,13 @@
   </section>
 
   <section class="band" id="preguntas">
-    <div class="wrap">
-      <div class="head"><h2>Preguntas frecuentes</h2></div>
+    <div class="wrap split">
+      <div class="split-aside">
+        <div class="head">
+          <p class="eyebrow" aria-hidden="true"><span>07</span>Preguntas</p>
+          <h2>Preguntas frecuentes</h2>
+        </div>
+      </div>
       <div class="faq">
         <details><summary>¿Sustituye a mi recepcionista?</summary><p>No. Se ocupa de las consultas repetitivas y de las que llegan fuera de horario. Recepción conserva las llamadas, la atención en persona y las decisiones que requieren criterio.</p></details>
         <details><summary>¿Con qué agenda funciona?</summary><p>Con Google Calendar, Outlook y los programas de gestión de clínicas que permiten conexión. Lo comprobamos en la auditoría, antes de presupuestar.</p></details>
@@ -274,7 +291,8 @@
           <h2>Que ningún paciente se quede sin respuesta.</h2>
           <p>Te explicamos cómo funcionaría en tu clínica, sin compromiso.</p>
         </div>
-        <a class="btn btn-primary" href="#auditoria">Solicitar auditoría gratuita</a>
+        <a class="btn btn-primary btn-arrow" href="#auditoria">Solicitar auditoría gratuita</a>
+        <svg class="final-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 8H21.5A6 6 0 0 1 21.5 20H12M12 20H23A6 6 0 0 1 23 32H12" fill="none" stroke="#F5F5F7" stroke-width="3.6" stroke-linecap="round"/><circle cx="12" cy="8" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="20" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="32" r="3.8" fill="#5E7FF0"/></svg>
       </div>
     </div>
   </section>
@@ -286,7 +304,7 @@
       <p>Automatización e inteligencia artificial para empresas. Girona, Catalunya. Proyectos en toda España.</p>
     </div>
     <div>
-      <h4>Servicios</h4>
+      <h2 class="foot-h">Servicios</h2>
       <ul>
         <li><a href="./#procesos">Procesos que automatizamos</a></li>
         <li><a href="clinicas.html">Asistente para clínicas</a></li>
@@ -294,7 +312,7 @@
       </ul>
     </div>
     <div>
-      <h4>Contacto</h4>
+      <h2 class="foot-h">Contacto</h2>
       <ul>
         <li><a class="js-email" href="mailto:damia@boschsystems.net">damia@boschsystems.net</a></li>
         <li><a class="js-phone" href="tel:+34621237118">+34 621 237 118</a></li>
