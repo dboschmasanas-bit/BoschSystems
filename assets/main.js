@@ -9,7 +9,7 @@
     email: "damia@boschsystems.net",
     phone: "+34 621 237 118",
     bookingUrl: "https://cal.com/damia-bosch-masanas-p4kf6e",
-    formEndpoint: "https://damiabosch-n8n.5bzgnq.easypanel.host/webhook/auditoria-boschsystems"
+    formEndpoint: "https://n8n.boschsystems.net/webhook/auditoria-boschsystems"
   };
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
