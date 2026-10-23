@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo del asistente para clínicas | Bosch Systems</title>
+<meta name="description" content="Pruébalo tú: una conversación de ejemplo con el asistente de una clínica ficticia, fuera de horario, una urgencia y un cambio de cita.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="canonical" href="https://boschsystems.net/demo.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=3">
+<link rel="shortcut icon" href="favicon.ico?v=3">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+<link rel="preload" href="assets/fonts/inter-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Bosch Systems">
+<meta property="og:title" content="Demo del asistente para clínicas | Bosch Systems">
+<meta property="og:description" content="Pruébalo tú: una conversación de ejemplo con el asistente de una clínica ficticia, fuera de horario, una urgencia y un cambio de cita.">
+<meta property="og:url" content="https://boschsystems.net/demo.html">
+<meta property="og:image" content="https://boschsystems.net/og-image.png?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+.demo-page .demo-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:32px}
+.demo-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
+.demo-tabs button{font:inherit;color:var(--muted);background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:9px 16px;cursor:pointer;min-height:44px}
+.demo-tabs button[aria-pressed="true"]{color:var(--ink);border-color:var(--accent-line);background:var(--accent-soft)}
+.phone{background:var(--surface);border:1px solid var(--line-strong);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;height:min(560px,78vh)}
+.phone-bar{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.phone-bar b{font-weight:600}
+.phone-bar span{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.chat{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:84%;padding:10px 14px;border-radius:14px;line-height:1.5;font-size:15px;white-space:pre-line}
+.msg.p{align-self:flex-end;background:var(--accent-soft);border:1px solid var(--accent-line)}
+.msg.a{align-self:flex-start;background:var(--raised);border:1px solid var(--line)}
+.msg.typing{color:var(--dim);font-family:var(--mono);font-size:13px}
+.chips{padding:12px 16px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-height:74px}
+.chips button{font:inherit;text-align:left;color:var(--ink);background:var(--raised);border:1px dashed var(--accent-line);border-radius:12px;padding:10px 14px;cursor:pointer;min-height:44px}
+.chips button:hover{border-color:var(--accent-ink)}
+.chips p{margin:0;color:var(--dim);font-size:14px}
+.recep{background:var(--surface);border:1px solid var(--line-strong);border-radius:18px;padding:22px}
+.recep h2{font-size:18px;margin:0 0 4px}
+.recep .sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+.recep dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:0;font-size:15px}
+.recep dt{color:var(--dim);font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+.recep dd{margin:0}
+.recep .empty{color:var(--dim);margin:0}
+.recep .tag-urg{color:#FFB4A9}
+.demo-note{margin-top:20px;color:var(--dim);font-size:14px;line-height:1.6}
+.demo-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:860px){.demo-page .demo-grid{grid-template-columns:1fr}.phone{height:min(520px,74vh)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Bosch Systems, inicio"><svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><path d="M12 8H21.5A6 6 0 0 1 21.5 20H12M12 20H23A6 6 0 0 1 23 32H12" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><circle cx="12" cy="8" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="20" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="32" r="3.8" fill="#5E7FF0"/></svg><span>Bosch Systems</span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="./#procesos">Procesos</a><a href="./#como-trabajamos">Cómo trabajamos</a><a href="./#precios">Precios</a><a href="clinicas.html">Clínicas</a><a href="./#preguntas">Preguntas</a><a class="btn btn-primary nav-cta" href="./#auditoria">Solicitar auditoría</a></nav>
+    <a class="btn btn-primary btn-sm" href="./#auditoria">Solicitar auditoría</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+  </div>
+</header>
+<main id="contenido">
+  <section class="band demo-page">
+    <div class="wrap">
+      <div class="head">
+        <h1>Pruébalo como lo vería <em>un paciente.</em></h1>
+        <p class="lead">Una conversación de ejemplo con el asistente de una clínica ficticia, «Clínica Dental Ejemplo». Elige una situación y pulsa los mensajes del paciente. A la derecha ves lo que le llega a recepción.</p>
+      </div>
+      <div class="demo-tabs" role="group" aria-label="Situaciones de ejemplo">
+        <button type="button" data-s="0" aria-pressed="true">Consulta fuera de horario</button>
+        <button type="button" data-s="1" aria-pressed="false">Dolor y urgencia</button>
+        <button type="button" data-s="2" aria-pressed="false">Cambiar una cita</button>
+      </div>
+      <div class="demo-grid">
+        <div class="phone" aria-label="Conversación de ejemplo">
+          <div class="phone-bar"><b>Clínica Dental Ejemplo</b><span id="hora">23:10</span></div>
+          <div class="chat" id="chat" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <aside class="recep" aria-live="polite">
+          <h2>Lo que ve recepción</h2>
+          <p class="sub">Al día siguiente, a primera hora, sin haber tenido que atender el chat.</p>
+          <div id="recep"><p class="empty">Cuando termine la conversación aparecerá aquí el resumen.</p></div>
+        </aside>
+      </div>
+      <p class="demo-note">Esto es una demostración ilustrativa con datos inventados: no es un cliente real ni se conecta a ninguna clínica. Las respuestas están escritas de antemano para enseñar el flujo. En una clínica real, el asistente se configura con sus horarios, tratamientos y normas, no da diagnósticos ni precios cerrados y pasa a una persona todo lo que lo necesita.</p>
+      <div class="demo-cta">
+        <a class="btn btn-primary btn-arrow" href="clinicas.html#auditoria">Solicitar auditoría gratuita</a>
+        <a class="btn btn-ghost" href="llamada.html">Prefiero hablarlo primero</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="./" aria-label="Bosch Systems, inicio"><svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><path d="M12 8H21.5A6 6 0 0 1 21.5 20H12M12 20H23A6 6 0 0 1 23 32H12" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><circle cx="12" cy="8" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="20" r="3.8" fill="#5E7FF0"/><circle cx="12" cy="32" r="3.8" fill="#5E7FF0"/></svg><span>Bosch Systems</span></a>
+      <p>Automatización e inteligencia artificial para empresas. Girona, Catalunya. Proyectos en toda España.</p>
+    </div>
+    <div>
+      <h2 class="foot-h">Servicios</h2>
+      <ul>
+        <li><a href="./#procesos">Procesos que automatizamos</a></li>
+        <li><a href="clinicas.html">Asistente para clínicas</a></li>
+        <li><a href="demo.html">Demo para clínicas</a></li>
+        <li><a href="./#auditoria">Auditoría gratuita</a></li>
+        <li><a href="llamada.html">Reservar una llamada</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="foot-h">Contacto</h2>
+      <ul>
+        <li><a class="js-email" href="mailto:damia@boschsystems.net">damia@boschsystems.net</a></li>
+        <li><a class="js-phone" href="tel:+34621237118">+34 621 237 118</a></li>
+      </ul>
+    </div>
+    <div class="legal-line">
+      <span>© <span class="js-year">2026</span> Bosch Systems · Damià Bosch Masanas</span>
+      <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js" defer></script>
+<script>
+(function () {
+  var S = [
+    { hora: "23:10", steps: [
+      ["p", "Hola, ¿hacéis blanqueamientos dentales?"],
+      ["a", "Hola, soy el asistente de Clínica Dental Ejemplo. Sí, hacemos blanqueamiento. El precio y el tipo dependen de una primera valoración con el equipo, así que no puedo darte una cifra cerrada por aquí. ¿Quieres que te reserve una valoración? Mañana tengo hueco a las 10:00 o a las 12:30."],
+      ["p", "A las 10:00 me va bien"],
+      ["a", "Hecho. ¿Me dices tu nombre y un teléfono por si recepción tiene que localizarte?"],
+      ["p", "Laura Gómez, 600 000 000"],
+      ["a", "Gracias, Laura. Te dejo reservada la valoración de mañana a las 10:00. Recepción lo verá a primera hora y te llegará un recordatorio."]
+    ], recep: [["Paciente", "Laura Gómez (600 000 000)"], ["Motivo", "Información sobre blanqueamiento"], ["Cita", "Mañana, 10:00 · valoración"], ["Estado", "Reservada por el asistente"], ["Hora del mensaje", "23:10, fuera de horario"]] },
+    { hora: "07:45", steps: [
+      ["p", "Me duele muchísimo una muela y se me ha hinchado la cara"],
+      ["a", "Lo siento mucho. Con hinchazón y dolor fuerte, esto puede ser una urgencia y no puedo valorarlo por chat. Voy a avisar ahora mismo a recepción para que te llamen en cuanto abran, a las 9:00. Si además tienes fiebre o te cuesta tragar o respirar, llama al 112 sin esperar."],
+      ["p", "Vale, mi número es 611 111 111, soy Marcos"],
+      ["a", "Gracias, Marcos. Queda marcado como urgente: recepción te llamará al 611 111 111 a las 9:00."]
+    ], recep: [["Paciente", "Marcos (611 111 111)"], ["Motivo", "Dolor fuerte e hinchazón facial"], ["Prioridad", "URGENTE · llamar a las 9:00"], ["Estado", "Derivado a una persona"], ["Hora del mensaje", "07:45, antes de abrir"]] },
+    { hora: "20:30", steps: [
+      ["p", "Necesito cambiar mi cita del jueves"],
+      ["a", "Claro. ¿Me dices tu nombre y a qué hora la tienes?"],
+      ["p", "Ana Ruiz, jueves a las 16:00"],
+      ["a", "Gracias, Ana. Puedo moverla a la mañana del jueves, a las 10:30, o al viernes a las 17:00. ¿Cuál te va mejor?"],
+      ["p", "El viernes a las 17:00"],
+      ["a", "Listo: tu cita pasa al viernes a las 17:00. Recepción recibe el cambio y la agenda queda actualizada."]
+    ], recep: [["Paciente", "Ana Ruiz"], ["Cambio", "Jueves 16:00 → viernes 17:00"], ["Estado", "Reprogramada por el asistente"], ["Hora del mensaje", "20:30, fuera de horario"]] }
+  ];
+  var chat = document.getElementById("chat"), chips = document.getElementById("chips"), recep = document.getElementById("recep"), hora = document.getElementById("hora");
+  var tabs = document.querySelectorAll(".demo-tabs button");
+  var cur = 0, step = 0, token = 0;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function add(cls, text) {
+    var d = document.createElement("div");
+    d.className = "msg " + cls;
+    d.textContent = text;
+    chat.appendChild(d);
+    chat.scrollTop = chat.scrollHeight;
+    return d;
+  }
+  function showRecep(s) {
+    recep.textContent = "";
+    var dl = document.createElement("dl");
+    s.recep.forEach(function (r) {
+      var dt = document.createElement("dt"), dd = document.createElement("dd");
+      dt.textContent = r[0]; dd.textContent = r[1];
+      if (r[1].indexOf("URGENTE") === 0) dd.className = "tag-urg";
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    recep.appendChild(dl);
+  }
+  function offer() {
+    var s = S[cur];
+    chips.textContent = "";
+    if (step >= s.steps.length) {
+      showRecep(s);
+      var p = document.createElement("p");
+      p.textContent = "Fin de la conversación de ejemplo. Prueba otra situación arriba.";
+      chips.appendChild(p);
+      return;
+    }
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = s.steps[step][1];
+    b.addEventListener("click", function () { sendPatient(); });
+    chips.appendChild(b);
+  }
+  function sendPatient() {
+    var my = token, s = S[cur];
+    add("p", s.steps[step][1]);
+    step++;
+    chips.textContent = "";
+    var reply = s.steps[step];
+    if (!reply) { offer(); return; }
+    var t = add("a typing", "escribiendo…");
+    setTimeout(function () {
+      if (my !== token) return;
+      t.remove();
+      add("a", reply[1]);
+      step++;
+      offer();
+    }, reduce ? 0 : 900);
+  }
+  function load(i) {
+    token++; cur = i; step = 0;
+    chat.textContent = "";
+    recep.textContent = "";
+    var e = document.createElement("p"); e.className = "empty"; e.textContent = "Cuando termine la conversación aparecerá aquí el resumen.";
+    recep.appendChild(e);
+    hora.textContent = S[i].hora;
+    tabs.forEach(function (t, k) { t.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+    offer();
+  }
+  tabs.forEach(function (t, k) { t.addEventListener("click", function () { load(k); }); });
+  load(0);
+})();
+</script>
+
+</body>
+</html>
