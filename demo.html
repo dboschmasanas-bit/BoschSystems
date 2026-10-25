@@ -89,7 +89,7 @@
           <div id="recep"><p class="empty">Cuando termine la conversación aparecerá aquí el resumen.</p></div>
         </aside>
       </div>
-      <p class="demo-note">Esto es una demostración ilustrativa con datos inventados: no es un cliente real ni se conecta a ninguna clínica. Las respuestas están escritas de antemano para enseñar el flujo. En una clínica real, el asistente se configura con sus horarios, tratamientos y normas, no da diagnósticos ni precios cerrados y pasa a una persona todo lo que lo necesita.</p>
+      <p class="demo-note">Esto es una demostración ilustrativa con datos inventados: no es un cliente real ni se conecta a ninguna clínica. Las respuestas están escritas de antemano para enseñar el flujo. En una clínica real, el asistente se configura con sus horarios, tratamientos y normas, no da diagnósticos ni precios cerrados, y recepción confirma las citas y atiende todo lo que lo necesita. Conectarlo con la agenda de la clínica depende del programa que use.</p>
       <div class="demo-cta">
         <a class="btn btn-primary btn-arrow" href="clinicas.html#auditoria">Solicitar auditoría gratuita</a>
         <a class="btn btn-ghost" href="llamada.html">Prefiero hablarlo primero</a>
@@ -132,12 +132,12 @@
   var S = [
     { hora: "23:10", steps: [
       ["p", "Hola, ¿hacéis blanqueamientos dentales?"],
-      ["a", "Hola, soy el asistente de Clínica Dental Ejemplo. Sí, hacemos blanqueamiento. El precio y el tipo dependen de una primera valoración con el equipo, así que no puedo darte una cifra cerrada por aquí. ¿Quieres que te reserve una valoración? Mañana tengo hueco a las 10:00 o a las 12:30."],
+      ["a", "Hola, soy el asistente de Clínica Dental Ejemplo. Sí, hacemos blanqueamiento. El precio y el tipo dependen de una primera valoración con el equipo, así que no puedo darte una cifra cerrada por aquí. ¿Quieres que deje solicitada una valoración? Mañana podría ser a las 10:00 o a las 12:30."],
       ["p", "A las 10:00 me va bien"],
       ["a", "Hecho. ¿Me dices tu nombre y un teléfono por si recepción tiene que localizarte?"],
       ["p", "Laura Gómez, 600 000 000"],
-      ["a", "Gracias, Laura. Te dejo reservada la valoración de mañana a las 10:00. Recepción lo verá a primera hora y te llegará un recordatorio."]
-    ], recep: [["Paciente", "Laura Gómez (600 000 000)"], ["Motivo", "Información sobre blanqueamiento"], ["Cita", "Mañana, 10:00 · valoración"], ["Estado", "Reservada por el asistente"], ["Hora del mensaje", "23:10, fuera de horario"]] },
+      ["a", "Gracias, Laura. Dejo solicitada la valoración de mañana a las 10:00. Recepción lo verá a primera hora y te la confirmará por mensaje."]
+    ], recep: [["Paciente", "Laura Gómez (600 000 000)"], ["Motivo", "Información sobre blanqueamiento"], ["Cita solicitada", "Mañana, 10:00 · valoración"], ["Estado", "Pendiente de confirmar por recepción"], ["Hora del mensaje", "23:10, fuera de horario"]] },
     { hora: "07:45", steps: [
       ["p", "Me duele muchísimo una muela y se me ha hinchado la cara"],
       ["a", "Lo siento mucho. Con hinchazón y dolor fuerte, esto puede ser una urgencia y no puedo valorarlo por chat. Voy a avisar ahora mismo a recepción para que te llamen en cuanto abran, a las 9:00. Si además tienes fiebre o te cuesta tragar o respirar, llama al 112 sin esperar."],
@@ -148,10 +148,10 @@
       ["p", "Necesito cambiar mi cita del jueves"],
       ["a", "Claro. ¿Me dices tu nombre y a qué hora la tienes?"],
       ["p", "Ana Ruiz, jueves a las 16:00"],
-      ["a", "Gracias, Ana. Puedo moverla a la mañana del jueves, a las 10:30, o al viernes a las 17:00. ¿Cuál te va mejor?"],
+      ["a", "Gracias, Ana. ¿Qué te vendría mejor? Puedo proponerle a recepción la mañana del jueves, a las 10:30, o el viernes a las 17:00."],
       ["p", "El viernes a las 17:00"],
-      ["a", "Listo: tu cita pasa al viernes a las 17:00. Recepción recibe el cambio y la agenda queda actualizada."]
-    ], recep: [["Paciente", "Ana Ruiz"], ["Cambio", "Jueves 16:00 → viernes 17:00"], ["Estado", "Reprogramada por el asistente"], ["Hora del mensaje", "20:30, fuera de horario"]] }
+      ["a", "Perfecto: dejo pedido el cambio al viernes a las 17:00. Recepción lo revisa y te confirma por mensaje."]
+    ], recep: [["Paciente", "Ana Ruiz"], ["Cambio pedido", "Jueves 16:00 → viernes 17:00"], ["Estado", "Pendiente de confirmar por recepción"], ["Hora del mensaje", "20:30, fuera de horario"]] }
   ];
   var chat = document.getElementById("chat"), chips = document.getElementById("chips"), recep = document.getElementById("recep"), hora = document.getElementById("hora");
   var tabs = document.querySelectorAll(".demo-tabs button");
